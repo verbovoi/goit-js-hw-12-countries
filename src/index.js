@@ -20,13 +20,17 @@ refs.inputCountryEl.addEventListener('input', debounce(onSearchCountry, 500));
 
 //функция поиска страны
 function onSearchCountry(event) {
-  resetContainer();
+  if (event.target.value == '') {
+    return;
+  }
+      resetContainer();
 
-  const searchQuery = event.target.value;
+    const searchQuery = event.target.value;
 
-  fetchCountry(searchQuery).
-    then(renderCardMarkup).
-    catch(onFetchError);
+    fetchCountry(searchQuery).
+      then(renderCardMarkup).
+      catch(onFetchError);
+  
 
 }
 
